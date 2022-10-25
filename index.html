@@ -1,49 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign Up || AlexVongDev</title>
-    <meta name="og:description" content="[[Meta Description]]" />
-    <meta property="og:title" content="[[Meta Description]]" />
-    <meta property="og:type" content="">
-    <meta property="og:url" content="">
-    <meta property="og:image" content=[[meta-image]] />
-    <meta property="og:image:type" content="[[meta-image]]" />
-    <link rel="shortcut icon" type="image/jpg" href=[[]] />
-    <link rel='stylesheet' href='css/style.css'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sign Up || AlexVongDev</title>
+        <meta name="og:description" content="[[Meta Description]]" />
+        <meta property="og:title" content="[[Meta Description]]" />
+        <meta property="og:type" content="">
+        <meta property="og:url" content="">
+        <meta property="og:image" content=[[meta-image]] />
+        <meta property="og:image:type" content="[[meta-image]]" />
+        <link rel="shortcut icon" type="image/jpg" href=[[]] />
+        <link rel='stylesheet' href='css/style.css'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
 </head>
-</head>
+
 <body>
-
-	<section class="todo-container">
-
-	<header>
-		<inner-column>
-			<h1 class="top-level-heading">To Do List</h1>
-			<form action="" class="search">
-				<input type="text" name="search" placeholder="Search Todos">
-			</form>
-		</inner-column>
-	</header>
-
-	<section class="todo-list">
-		<inner-column>
-			<ul>
-				<li class="body-copy">
-					<i class="fa-solid fa-square-check"></i>
-					<i class="fa-regular fa-square"></i>
-					<span>Finish Array Lesson</span>
-					<i class="fa-regular fa-trash-can"></i>
-				</li>
-			</ul>
-		</inner-column>
-		
-	</section>
-
-	</section>
-	
+    <section class="todo-container">
+        <header>
+            <inner-column>
+                <h1 class="top-level-heading">To Do List</h1>
+            </inner-column>
+        </header>
+        <section class="search-box">
+            <inner-column>
+                <form action="" class="search">
+                    <input type="text" name="search" placeholder="Search Todos">
+                </form>
+            </inner-column>
+        </section>
+        <section class="todo-list-container">
+            <inner-column>
+                <div class="todo-list">
+                    <h2 class="third-level-heading date"></h2>
+                    <form class="add">
+                        <input type="text" name="add" placeholder="Add New Todo...">
+                        <input type="submit" class='submit-btn' value="Add To Do">
+                    </form>
+                    <p class="body-copy empty">What Would You Like to do Today?</p>
+                    <ul>
+                        <li class="body-copy todo-item">
+                            <span>finish todo list</span>
+                            <div class="delete-btn">
+                                <i class="fa-regular fa-trash-can delete"></i>
+                            </div>
+                        </li>
+                        <li class="body-copy todo-item">
+                            <span>eat pizza</span>
+                            <div class="delete-btn">
+                                <i class="fa-regular fa-trash-can delete"></i>
+                            </div>
+                        </li>
+                        <li class="body-copy todo-item">
+                            <span>go fishing</span>
+                            <div class="delete-btn">
+                                <i class="fa-regular fa-trash-can delete"></i>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </inner-column>
+        </section>
+    </section>
+    <script src="app.js"></script>
 </body>
+
 </html>
