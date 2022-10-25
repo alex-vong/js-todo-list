@@ -4,15 +4,9 @@ window.addEventListener('load', (event) => {
 
 
 const search = document.querySelector('.search input');
-
 const addForm = document.querySelector('.add');
-
 const ul = document.querySelector('ul');
-
 const today = document.querySelector('.date');
-console.log(today);
-
-
 
 const date = new Date();
 let day = date.getDate();
@@ -24,10 +18,10 @@ const nameOfMonthUS = date.toLocaleString(
 
 
 const todayDate = (`${nameOfMonthUS} ${day}, ${year}`);
-
-console.log(todayDate);
-
 today.innerText = todayDate;
+
+
+
 
 const generateTemplate = (todo) => {
     const html = `
@@ -46,9 +40,7 @@ const generateTemplate = (todo) => {
 
 addForm.addEventListener('submit', e => {
     e.preventDefault();
-
     const toDo = addForm.add.value.trim();
-
 
     if (toDo.length) {
     	addForm.add.classList.remove('error');
@@ -57,10 +49,6 @@ addForm.addEventListener('submit', e => {
 	} 
 
 });
-
-
-
-
 
 
 //delete todos
@@ -72,6 +60,7 @@ ul.addEventListener('click', e => {
 });
 
 
+//filtering task
 const filterTodos = (term) => {
 	Array.from(ul.children)
 		.filter( (todo) => !todo.textContent.toLowerCase().includes(term))
@@ -89,12 +78,6 @@ search.addEventListener('keyup', e => {
 
 
 });
-
-
-
-
-
-
 
 });
 
