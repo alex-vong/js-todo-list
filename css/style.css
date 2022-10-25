@@ -27,7 +27,14 @@
 
 /* SITE SECTIONS */
 
+body *  {
+	display: flex;
+	flex-direction: column;
+}
 
+/*.empty {
+	display:  none;
+}*/
 
 
 header {
@@ -49,6 +56,25 @@ header input {
 	width: 50%;
 }
 
+.search-box {
+	padding: 15px 0;
+}
+
+input {
+	padding: 10px;
+}
+
+input[type="text"],
+input[tyep="text"]:focus {
+	color: var(--black);
+	border: 1px solid var(--terms);
+	outline: none;
+}
+
+i {
+	cursor: pointer;
+}
+
 input[type="submit"], .modal button {
 	background-color: var(--button);
     color: var(--text);
@@ -63,6 +89,49 @@ input[type="submit"], .modal button {
     border: none;
 }
 
+form.add {
+	gap: 10px;
+}
+
+.todo-list {
+	gap:  10px;
+}
+
+.todo-list ul {
+	gap:  15px;
+	padding: 15px 10px;
+	margin-top: 20px;
+	/*border: 1px solid var(--terms);*/
+}
+
+.todo-list ul li {
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 5px 0;
+	border-bottom: 1px solid var(--terms);
+}
+
+.todo-list .todo-text {
+	flex-direction: row;
+	align-items: baseline;
+	gap:  5px;
+}
+
+.fa-trash-can {
+	align-self: flex-end;
+	align-content: flex-end;
+	align-items: flex-end;
+}
+
+input.error {
+	border: 2px solid var(--error);
+}
+
+
+
+.filtered {
+	display: none;
+}
 
 
 
