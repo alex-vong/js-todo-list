@@ -9,15 +9,17 @@ const ul = document.querySelector('ul');
 const today = document.querySelector('.date');
 
 const date = new Date();
-let day = date.getDate();
-let year = date.getFullYear();
-const nameOfMonthUS = date.toLocaleString(
-  'en-US', {month: 'long'}
-);
+// let day = date.getDate();
+// let year = date.getFullYear();
+// const nameOfMonthUS = date.toLocaleString(
+//   'en-US', {month: 'long'}
+// );
 
 
 
-const todayDate = (`${nameOfMonthUS} ${day}, ${year}`);
+// const todayDate = (`${nameOfMonthUS} ${day}, ${year}`);
+
+const todayDate = dateFns.format(date, 'MMMM Do, YYYY');
 today.innerText = todayDate;
 
 
