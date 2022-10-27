@@ -94,13 +94,21 @@ form.add {
 }
 
 .todo-list {
+	gap:  30px;
+}
+
+.masthead {
 	gap:  10px;
+}
+
+.list-container {
+	gap:  20px;
 }
 
 .todo-list ul {
 	gap:  15px;
-	padding: 15px 10px;
-	margin-top: 20px;
+	padding: 0 10px;
+	
 	/*border: 1px solid var(--terms);*/
 }
 
@@ -129,9 +137,7 @@ input.error {
 
 
 
-.filtered {
-	display: none;
-}
+
 
 
 
