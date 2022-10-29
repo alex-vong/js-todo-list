@@ -65,7 +65,7 @@ input {
 }
 
 input[type="text"],
-input[tyep="text"]:focus {
+input[type="text"]:focus {
 	color: var(--black);
 	border: 1px solid var(--terms);
 	outline: none;
