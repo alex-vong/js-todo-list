@@ -6,6 +6,7 @@ body {
    background-color: var(--white);
    color:  var(--color);
    overflow-x: hidden;
+   overflow: hidden;
 
    -webkit-font-smoothing: antialiased;
    list-style: none;
