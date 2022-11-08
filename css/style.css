@@ -1,14 +1,14 @@
-
 /* RESET */
 @import 'meyer-reset.css';
 @import 'setup.css';
 
-@import 'developer-styles.css'; 
+@import 'developer-styles.css';
 /* comment this ^ out - when you are ready */
 
 
 /* SETTINGS */
-@import 'settings.css'; /* variables/ etc */
+@import 'settings.css';
+/* variables/ etc */
 
 
 /* STRUCTURE */
@@ -27,9 +27,9 @@
 
 /* SITE SECTIONS */
 
-body *  {
-	display: flex;
-	flex-direction: column;
+body * {
+    display: flex;
+    flex-direction: column;
 }
 
 /*.empty {
@@ -38,109 +38,172 @@ body *  {
 
 
 header {
-	display:  flex;
-	flex-direction: column;
-	justify-content: center;
-	text-align: center;
-	gap:  20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 20px;
 
-	background-color: var(--foreground);
+    background-color: var(--foreground);
 
-	padding: 40px 10px;
-	color: var(--text);
+    padding: 40px 10px;
+    color: var(--text);
 
 }
 
 header input {
-	padding: 10px;
-	width: 50%;
+    padding: 10px;
+    width: 50%;
 }
 
 .search-box {
-	padding: 15px 0;
-}
-
-input {
-	padding: 10px;
+    padding: 15px 0;
 }
 
 input[type="text"],
 input[type="text"]:focus {
-	color: var(--black);
-	border: 1px solid var(--terms);
-	outline: none;
+    color: var(--black);
+    border: 1px solid var(--terms);
+    outline: none;
+
+    padding: 15px 15px 15px 32px;
+
+
 }
 
 i {
-	cursor: pointer;
+    cursor: pointer;
 }
 
-input[type="submit"], .modal button {
-	background-color: var(--button);
+input[type="submit"] {
+    background-color: var(--button);
     color: var(--text);
     font-size: 16px;
     font-weight: 900;
     align-self: center;
     padding: 15px 30px;
-    cursor:  pointer;
-    -webkit-appearance:  textfield;
-    -webkit-appearance:  none;
-    -webkit-border-fit:  border;
+    cursor: pointer;
+    -webkit-appearance: textfield;
+    -webkit-appearance: none;
+    -webkit-border-fit: border;
     border: none;
 }
 
 form.add {
-	gap: 10px;
+    gap: 10px;
 }
 
+
+
+.filters,
+.controls {
+    flex-direction: row;
+
+}
+
+.filters {
+    gap: 20px;
+    align-self: center;
+}
+
+.filters span {
+	
+	cursor: pointer;
+}
+
+.filters span.active {
+	color: var(--alternate);
+	border-bottom: 1px solid var(--background);
+	
+}
+
+.controls {
+    justify-content: space-between;
+    gap: 10px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--terms);
+}
+
+.controls button {
+    background-color: var(--error);
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 500;
+    align-self: center;
+    padding: 10px 20px;
+    cursor: pointer;
+    -webkit-appearance: textfield;
+    -webkit-appearance: none;
+    -webkit-border-fit: border;
+    border: none;
+
+}
+
+li.task p {
+    align-self: center;
+}
+
+label {
+    flex-direction: row;
+    gap: 10px;
+}
+
+form {
+    position: relative;
+}
+
+form.add input[type="text"] {
+	position: relative;
+}
+form i {
+    top: 50%;
+    position: absolute;
+    transform: translate(10px, -50%);
+}
+
+
+
 .todo-list {
-	gap:  30px;
+    gap: 30px;
 }
 
 .masthead {
-	gap:  10px;
+    gap: 10px;
 }
 
 .list-container {
-	gap:  20px;
+    gap: 20px;
 }
 
 .todo-list ul {
-	gap:  15px;
-	padding: 0 10px;
-	
-	/*border: 1px solid var(--terms);*/
+    gap: 15px;
+
 }
 
 .todo-list ul li {
-	flex-direction: row;
-	justify-content: space-between;
-	padding: 5px 0;
-	border-bottom: 1px solid var(--terms);
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--terms);
 }
 
 .todo-list .todo-text {
-	flex-direction: row;
-	align-items: baseline;
-	gap:  5px;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 5px;
 }
 
 .fa-trash-can {
-	align-self: flex-end;
-	align-content: flex-end;
-	align-items: flex-end;
+    align-self: flex-end;
+    align-content: flex-end;
+    align-items: flex-end;
 }
 
 input.error {
-	border: 2px solid var(--error);
+    border: 2px solid var(--error);
 }
 
 
-
-
-
-
-
-
-
-
+.filtered {
+    display: none;
+}
