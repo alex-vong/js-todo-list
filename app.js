@@ -1,23 +1,26 @@
-window.addEventListener('load', (event) => {
-  console.log('page is fully loaded');
 
 
 
-const search = document.querySelector('.search input');
-const addForm = document.querySelector('.add');
-const ul = document.querySelector('ul');
-const today = document.querySelector('.date');
+
+// const search = document.querySelector('.search input');
+// const addForm = document.querySelector('.add');
+// const ul = document.querySelector('ul');
+// const today = document.querySelector('.date');
+// const filters = document.querySelectorAll(".filters span");
+// const clearAll = document.querySelector(".clear-btn");
+
+const search = document.querySelector('.search input'),
+addForm = document.querySelector('.add'),
+ul = document.querySelector('ul'),
+today = document.querySelector('.date'),
+filters = document.querySelectorAll(".filters span"),
+clearAll = document.querySelector(".clear-btn");
 
 const date = new Date();
-// let day = date.getDate();
-// let year = date.getFullYear();
-// const nameOfMonthUS = date.toLocaleString(
-//   'en-US', {month: 'long'}
-// );
 
 
 
-// const todayDate = (`${nameOfMonthUS} ${day}, ${year}`);
+
 
 const todayDate = dateFns.format(date, 'MMMM Do, YYYY');
 today.innerText = todayDate;
@@ -81,7 +84,7 @@ search.addEventListener('keyup', e => {
 
 });
 
-});
+
 
 
 
