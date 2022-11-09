@@ -15,6 +15,8 @@ ul = document.querySelector('ul'),
 today = document.querySelector('.date'),
 filters = document.querySelectorAll(".filters span"),
 clearAll = document.querySelector(".clear-btn");
+clearAll = document.querySelector(".clear-btn"),
+taskMenu = document.querySelector("ul .task-menu");
 
 const date = new Date();
 
