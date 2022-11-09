@@ -14,11 +14,9 @@ addForm = document.querySelector('.add'),
 ul = document.querySelector('ul'),
 today = document.querySelector('.date'),
 filters = document.querySelectorAll(".filters span"),
-clearAll = document.querySelector(".clear-btn");
 clearAll = document.querySelector(".clear-btn"),
 taskMenu = document.querySelector("ul .task-menu");
 
-const date = new Date();
 
 // ellipsis = document.querySelectorAll("i.ellipsis"),
 // listItem = document.querySelectorAll("li.task"),
@@ -26,27 +24,84 @@ const date = new Date();
 
 
 
+const date = new Date();
 
 
 const todayDate = dateFns.format(date, 'MMMM Do, YYYY');
 today.innerText = todayDate;
 
+// Array.prototype.forEach.call(ellipsis, function(item) {
+//     item.addEventListener('click', function(e) {
+//         taskMenu.classList.add('hover');
+//     });
+//     // For each node item..
+// });
+
+// // container.addEventListener('click', ()=> {
+// // 	taskMenu.classList.remove('hover');
+// // 	// console.log('container clicked');
+// // })
+
+let todos = JSON.parse(localStorage.getItem("todo-list")); //getting ls todos
 
 
+function generateTemplate() {
+	// console.log(todos);
+	let li = '';
+	todos.forEach((todo, id) => {
 
-const generateTemplate = (todo) => {
-    const html = `
-		<li class="body-copy todo-item">
-			    <span>${todo}</span>
-			<div class="delete-btn">
-			    <i class="fa-regular fa-trash-can delete"></i>
-			</div>
-		</li>
-	`;
+		let isCompleted = '';
 
-	ul.innerHTML += html;
+		if(todo.status == "complete") {
+			isCompleted = 'checked';
+		} else {
+			isCompleted = '';
+		}
 
-};
+		// let isCompleted = todo.status == "completed" ? "checked" : "";
+
+
+		li += `
+            <li class="task">
+                <label for="${id}">
+                    <input onclick="updateStatus(this)" type="checkbox" id="${id}" ${isCompleted}>
+                    <p class="${isCompleted}">${todo.taskName}</p>
+                </label>
+                <div class="settings">
+                    <i onclick="showMenu(this)" class="fa-solid fa-ellipsis ellipsis"></i>
+                    <ul class="task-menu">
+                        <li>
+                            <i class="fa-regular fa-pen-to-square"></i>
+                            <p class="body-class">Edit</p>
+                        </li>
+                        <li>
+                            <i class="fa-regular fa-trash-can"></i>
+                            <p class="body-class">Delete</p>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+		`;
+
+		ul.innerHTML = li;
+	})
+}
+
+generateTemplate();
+
+function showMenu(selectedTask) {
+	let taskMenu = selectedTask.parentElement.lastElementChild;
+	console.log(taskMenu);
+	taskMenu.classList.add("show");
+
+	document.addEventListener('click', e => {
+		if(e.target.tagName !== 'I' || e.target !== selectedTask) {
+	taskMenu.classList.remove("show");
+
+		}
+	})
+}
+
 function updateStatus(selectedTask) { //caled from onclick
 	let taskName = selectedTask.parentElement.lastElementChild; //getting the parent elements last child which is p tage
 
