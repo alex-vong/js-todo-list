@@ -109,6 +109,8 @@ form.add {
 .filters span {
 	
 	cursor: pointer;
+
+    cursor: pointer;
 }
 
 .filters span.active {
