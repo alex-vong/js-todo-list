@@ -20,6 +20,10 @@ taskMenu = document.querySelector("ul .task-menu");
 
 const date = new Date();
 
+// ellipsis = document.querySelectorAll("i.ellipsis"),
+// listItem = document.querySelectorAll("li.task"),
+// container = document.querySelector(".todo-list-container");
+
 
 
 
