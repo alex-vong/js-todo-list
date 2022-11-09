@@ -41,16 +41,39 @@ const generateTemplate = (todo) => {
 	ul.innerHTML += html;
 
 };
+function updateStatus(selectedTask) { //caled from onclick
+	let taskName = selectedTask.parentElement.lastElementChild; //getting the parent elements last child which is p tage
+
+	if(selectedTask.checked) { //if clicked
+		taskName.classList.add('checked'); //add class of checked
+		todos[selectedTask.id].status = "completed"; //update the status to completed
+	} else {
+		taskName.classList.remove('checked');
+		todos[selectedTask.id].status = "pending"; //update status to pending
+	}
+    localStorage.setItem("todo-list", JSON.stringify(todos)); //update local storage to have completed and pending
+
+}
 
 
 addForm.addEventListener('submit', e => {
     e.preventDefault();
-    const toDo = addForm.add.value.trim();
+    const newTodo = addForm.add.value.trim();
 
-    if (toDo.length) {
+    if (newTodo.length) {
     	addForm.add.classList.remove('error');
-    	generateTemplate(toDo);
     	addForm.reset();
+    	// console.log(newTodo);
+
+    	if (!todos) {
+    		todos = []; //if todos don't exist, pass an empty array to todos
+    	}
+    	addForm.add.value = "";
+    	let taskInfo = {taskName: newTodo, status: "pending"};
+    	todos.push(taskInfo); //adding new task to todos
+    	localStorage.setItem("todo-list", JSON.stringify(todos));
+    	generateTemplate();
+
 	} 
 
 });
