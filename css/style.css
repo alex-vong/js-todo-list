@@ -37,6 +37,7 @@ body * {
 }*/
 
 
+
 header {
     display: flex;
     flex-direction: column;
@@ -107,16 +108,14 @@ form.add {
 }
 
 .filters span {
-	
-	cursor: pointer;
 
     cursor: pointer;
 }
 
 .filters span.active {
-	color: var(--alternate);
-	border-bottom: 1px solid var(--background);
-	
+    color: var(--alternate);
+    border-bottom: 1px solid var(--background);
+
 }
 
 .controls {
@@ -141,6 +140,7 @@ form.add {
 
 }
 
+
 li.task p {
     align-self: center;
 }
@@ -155,8 +155,9 @@ form {
 }
 
 form.add input[type="text"] {
-	position: relative;
+    position: relative;
 }
+
 form i {
     top: 50%;
     position: absolute;
@@ -177,7 +178,7 @@ form i {
     gap: 20px;
 }
 
-.todo-list ul {
+.todo-list ul:not(.task-menu) {
     gap: 15px;
 
 }
@@ -189,10 +190,65 @@ form i {
     border-bottom: 1px solid var(--terms);
 }
 
+ul.task-menu li {
+
+    border-bottom: none;
+    gap: 5px;
+    justify-content: start;
+
+    /*height: 30px;*/
+    padding: 8px;
+}
+
+ul .task p.checked {
+	text-decoration: line-through;
+}
+
+
+@media (hover: hover) {
+    body {
+        /*background-color: red !important;*/
+    }
+}
+
+
+@media (hover: none) {
+
+    body {
+        /*background-color: dodgerblue; !important;*/
+    }
+}
+
+ul.task-menu li:hover {
+    background-color: #f5f5f5;
+}
+
+.task .settings {
+    cursor: pointer;
+    position: relative;
+}
+
+.task .settings .task-menu {
+    position: absolute;
+    right: -5px;
+    background: var(--white);
+    padding: 5px;
+    box-shadow: 0 0 6px rgb(0 0 0 / 0.15);
+    z-index: 2;
+
+    transform: scale(0);
+    transition: transform 0.3s ease-in-out;
+    transform-origin: top right;
+}
+
+.task .settings .show {
+    transform: scale(1);
+}
+
 .todo-list .todo-text {
     flex-direction: row;
     align-items: baseline;
-    gap: 5px;
+
 }
 
 .fa-trash-can {
