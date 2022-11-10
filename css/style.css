@@ -261,6 +261,10 @@ input.error {
     border: 2px solid var(--error);
 }
 
+p.empty {
+	text-align: center;
+}
+
 
 .filtered {
     display: none;
