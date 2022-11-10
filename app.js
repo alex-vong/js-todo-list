@@ -30,17 +30,6 @@ const date = new Date();
 const todayDate = dateFns.format(date, 'MMMM Do, YYYY');
 today.innerText = todayDate;
 
-// Array.prototype.forEach.call(ellipsis, function(item) {
-//     item.addEventListener('click', function(e) {
-//         taskMenu.classList.add('hover');
-//     });
-//     // For each node item..
-// });
-
-// // container.addEventListener('click', ()=> {
-// // 	taskMenu.classList.remove('hover');
-// // 	// console.log('container clicked');
-// // })
 
 let todos = JSON.parse(localStorage.getItem("todo-list")); //getting ls todos
 
@@ -48,6 +37,7 @@ let todos = JSON.parse(localStorage.getItem("todo-list")); //getting ls todos
 function generateTemplate() {
 	// console.log(todos);
 	let li = '';
+
 	todos.forEach((todo, id) => {
 
 		let isCompleted = '';
@@ -71,7 +61,7 @@ function generateTemplate() {
                     <i onclick="showMenu(this)" class="fa-solid fa-ellipsis ellipsis"></i>
                     <ul class="task-menu">
                         <li>
-                            <i class="fa-regular fa-pen-to-square"></i>
+                            <i class= "fa-regular fa-pen-to-square"></i>
                             <p class="body-class">Edit</p>
                         </li>
                         <li>
@@ -87,7 +77,10 @@ function generateTemplate() {
 	})
 }
 
-generateTemplate();
+if (todos) {
+	generateTemplate();
+}
+// generateTemplate();
 
 function showMenu(selectedTask) {
 	let taskMenu = selectedTask.parentElement.lastElementChild;
@@ -119,7 +112,7 @@ function updateStatus(selectedTask) { //caled from onclick
 
 addForm.addEventListener('submit', e => {
     e.preventDefault();
-    const newTodo = addForm.add.value.trim();
+    let newTodo = addForm.add.value.trim();
 
     if (newTodo.length) {
     	addForm.add.classList.remove('error');
@@ -138,6 +131,16 @@ addForm.addEventListener('submit', e => {
 	} 
 
 });
+
+// addForm.addEventListener('keyup', e => {
+
+// 	let userTask = addForm.add.value.trim();
+	
+// 	if (e.key === 'Enter' && userTask) {
+// 		let todos = localStorage.getItem("todo-list");
+// 	}
+
+// });
 
 
 //delete todos
