@@ -35,7 +35,7 @@ let todos = JSON.parse(localStorage.getItem("todo-list")); //getting ls todos
 
 
 function generateTemplate() {
-	// console.log(todos);
+
 	let li = '';
 
 	todos.forEach((todo, id) => {
@@ -61,10 +61,10 @@ function generateTemplate() {
                     <i onclick="showMenu(this)" class="fa-solid fa-ellipsis ellipsis"></i>
                     <ul class="task-menu">
                         <li>
-                            <i class= "fa-regular fa-pen-to-square"></i>
+                            <i class="fa-regular fa-pen-to-square"></i>
                             <p class="body-class">Edit</p>
                         </li>
-                        <li>
+                        <li onclick="deleteTask(${id})">
                             <i class="fa-regular fa-trash-can"></i>
                             <p class="body-class">Delete</p>
                         </li>
@@ -93,6 +93,15 @@ function showMenu(selectedTask) {
 
 		}
 	})
+}
+
+
+//delete task
+function deleteTask(deleteId){
+	todos.splice(deleteId, 1); //removed deleted id from array of todos
+    localStorage.setItem("todo-list", JSON.stringify(todos));
+    generateTemplate();
+
 }
 
 function updateStatus(selectedTask) { //caled from onclick
@@ -132,24 +141,15 @@ addForm.addEventListener('submit', e => {
 
 });
 
-// addForm.addEventListener('keyup', e => {
-
-// 	let userTask = addForm.add.value.trim();
-	
-// 	if (e.key === 'Enter' && userTask) {
-// 		let todos = localStorage.getItem("todo-list");
-// 	}
-
-// });
 
 
 //delete todos
-ul.addEventListener('click', e => {
-	if (e.target.classList.contains('delete')) {
-		e.target.parentElement.parentElement.remove();
-	};
+// ul.addEventListener('click', e => {
+// 	if (e.target.classList.contains('delete')) {
+// 		e.target.parentElement.parentElement.remove();
+// 	};
 	
-});
+// });
 
 
 //filtering task
