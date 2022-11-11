@@ -1,4 +1,8 @@
-
+// window.addEventListener('load', (event) => {
+//   if (todos) {
+// 	generateTemplate();
+// }
+// });
 
 
 
@@ -30,11 +34,11 @@ const date = new Date();
 const todayDate = dateFns.format(date, 'MMMM Do, YYYY');
 today.innerText = todayDate;
 
-
+let editId;
+let isEditedTask = false;
 let todos = JSON.parse(localStorage.getItem("todo-list")); //getting ls todos
 
 
-function generateTemplate() {
 filters.forEach(btn => {
 	btn.addEventListener('click', () => {
 	
@@ -46,13 +50,16 @@ filters.forEach(btn => {
 	})
 })
 
+function generateTemplate(filter) {
 	let li = '';
+ 	if(todos.length === 0) {
+ 		ul.innerHTML = `<span>You don't have any task here!</span>`;
+ 	}
 
 	todos.forEach((todo, id) => {
-
 		let isCompleted = '';
 
-		if(todo.status == "complete") {
+		if(todo.status == "completed") {
 			isCompleted = 'checked';
 		} else {
 			isCompleted = '';
@@ -60,41 +67,45 @@ filters.forEach(btn => {
 
 		// let isCompleted = todo.status == "completed" ? "checked" : "";
 
+		if(filter == todo.status || filter == "all"){
+			li += `
+	            <li class="task">
+	                <label for="${id}">
+	                    <input onclick="updateStatus(this)" type="checkbox" id="${id}" ${isCompleted}>
+	                    <p class="${isCompleted}">${todo.taskName}</p>
+	                </label>
+	                <div class="settings">
+	                    <i onclick="showMenu(this)" class="fa-solid fa-ellipsis ellipsis"></i>
+	                    <ul class="task-menu">
+	                        <li onclick="editTask(${id}, '${todo.taskName}')">
+	                            <i class="fa-regular fa-pen-to-square"></i>
+	                            <p class="body-class">Edit</p>
+	                        </li>
+	                        <li onclick="deleteTask(${id})">
+	                            <i class="fa-regular fa-trash-can"></i>
+	                            <p class="body-class">Delete</p>
+	                        </li>
+	                    </ul>
+	                </div>
+	            </li>
+			`;
 
-		li += `
-            <li class="task">
-                <label for="${id}">
-                    <input onclick="updateStatus(this)" type="checkbox" id="${id}" ${isCompleted}>
-                    <p class="${isCompleted}">${todo.taskName}</p>
-                </label>
-                <div class="settings">
-                    <i onclick="showMenu(this)" class="fa-solid fa-ellipsis ellipsis"></i>
-                    <ul class="task-menu">
-                        <li>
-                            <i class="fa-regular fa-pen-to-square"></i>
-                            <p class="body-class">Edit</p>
-                        </li>
-                        <li onclick="deleteTask(${id})">
-                            <i class="fa-regular fa-trash-can"></i>
-                            <p class="body-class">Delete</p>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-		`;
+		}
 
-		ul.innerHTML = li;
+		ul.innerHTML = li || `<span>You don't have any task here!</span>`;
 	})
-}
+
+};
+
+
 
 if (todos) {
-	generateTemplate();
+	generateTemplate("all");
 }
-// generateTemplate();
+// generateTemplate("all");
 
 function showMenu(selectedTask) {
 	let taskMenu = selectedTask.parentElement.lastElementChild;
-	console.log(taskMenu);
 	taskMenu.classList.add("show");
 
 	document.addEventListener('click', e => {
@@ -106,19 +117,39 @@ function showMenu(selectedTask) {
 }
 
 
+//edit task
+function editTask(taskId, taskName) {
+	editId = taskId;
+	isEditedTask = true;
+	addForm.add.value = taskName;
+	addForm.add.classList.add('highlight');
+
+}
+
 //delete task
-function deleteTask(deleteId){
+function deleteTask(deleteId, filter){
 	todos.splice(deleteId, 1); //removed deleted id from array of todos
+    localStorage.setItem("todo-list", JSON.stringify(todos));
+    generateTemplate("all");
+
+}
+
+
+//delete entire list
+
+clearAll.addEventListener("click", () => {
+	todos.splice(0, todos.length); //removed deleted id from array of todos
     localStorage.setItem("todo-list", JSON.stringify(todos));
     generateTemplate();
 
-}
+})
 
 function updateStatus(selectedTask) { //caled from onclick
 	let taskName = selectedTask.parentElement.lastElementChild; //getting the parent elements last child which is p tage
 
 	if(selectedTask.checked) { //if clicked
 		taskName.classList.add('checked'); //add class of checked
+		console.log(taskName);
 		todos[selectedTask.id].status = "completed"; //update the status to completed
 	} else {
 		taskName.classList.remove('checked');
@@ -131,21 +162,37 @@ function updateStatus(selectedTask) { //caled from onclick
 
 addForm.addEventListener('submit', e => {
     e.preventDefault();
-    let newTodo = addForm.add.value.trim();
+    let value = addForm.add.value.trim();
+	
+	const setTodo = value.split(" ");
+	for (let i = 0; i < setTodo.length; i++) {
+	    setTodo[i] = setTodo[i][0].toUpperCase() + setTodo[i].substr(1);
+	}
+
+	const newTodo= setTodo.join(" ");
+
 
     if (newTodo.length) {
     	addForm.add.classList.remove('error');
     	addForm.reset();
+		addForm.add.classList.remove('highlight');
+
     	// console.log(newTodo);
 
-    	if (!todos) {
+    	if(!isEditedTask) {
+    		if (!todos) {
     		todos = []; //if todos don't exist, pass an empty array to todos
+	    	}
+	    	let taskInfo = {taskName: newTodo, status: "pending"};
+	    	todos.push(taskInfo); //adding new task to todos
+    	} else {
+    		isEditedTask = false;
+    		todos[editId].taskName = newTodo;
     	}
+
     	addForm.add.value = "";
-    	let taskInfo = {taskName: newTodo, status: "pending"};
-    	todos.push(taskInfo); //adding new task to todos
     	localStorage.setItem("todo-list", JSON.stringify(todos));
-    	generateTemplate();
+    	generateTemplate("all");
 
 	} 
 
