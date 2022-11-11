@@ -91,6 +91,9 @@ input[type="submit"] {
 }
 
 .masthead h2 {
+	text-align: center;
+}
+
 form.add {
     gap: 10px;
 }
@@ -114,8 +117,8 @@ form.add {
 }
 
 .filters span.active {
-    color: var(--alternate);
-    border-bottom: 1px solid var(--background);
+    color: #355fb7;
+    font-weight:  600;
 
 }
 
@@ -127,10 +130,10 @@ form.add {
 }
 
 .controls button {
-    background-color: var(--error);
+    background-color: var(--pass);
     color: var(--text);
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 600;
     align-self: center;
     padding: 10px 20px;
     cursor: pointer;
@@ -157,6 +160,11 @@ form {
 
 form.add input[type="text"] {
     position: relative;
+}
+
+form.add input.highlight {
+	border:  2px solid var(--highlight);
+	font-size: 18px;
 }
 
 form i {
@@ -203,25 +211,15 @@ ul.task-menu li {
 
 ul .task p.checked {
 	text-decoration: line-through;
-}
-
-
-@media (hover: hover) {
-    body {
-        /*background-color: red !important;*/
-    }
-}
-
-
-@media (hover: none) {
-
-    body {
-        /*background-color: dodgerblue; !important;*/
-    }
+	color: var(--checked);
 }
 
 ul.task-menu li:hover {
-    background-color: #f5f5f5;
+    background-color: var(--hover);
+}
+
+ul span {
+	text-align: center;
 }
 
 .task .settings {
