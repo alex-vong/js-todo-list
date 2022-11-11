@@ -16,6 +16,9 @@ body {
 
     --error:  #d21224;
     --pass:  #76AF3D;
+    --highlight:  #355fb7;
+    --hover:  #f5f5f5;
+    --checked: #929292;
 
 }
 
