@@ -35,6 +35,16 @@ let todos = JSON.parse(localStorage.getItem("todo-list")); //getting ls todos
 
 
 function generateTemplate() {
+filters.forEach(btn => {
+	btn.addEventListener('click', () => {
+	
+		document.querySelector("span.active").classList.remove("active");
+		btn.classList.add("active");
+		
+		generateTemplate(btn.id);
+
+	})
+})
 
 	let li = '';
 
