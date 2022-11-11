@@ -1,17 +1,4 @@
-// window.addEventListener('load', (event) => {
-//   if (todos) {
-// 	generateTemplate();
-// }
-// });
 
-
-
-// const search = document.querySelector('.search input');
-// const addForm = document.querySelector('.add');
-// const ul = document.querySelector('ul');
-// const today = document.querySelector('.date');
-// const filters = document.querySelectorAll(".filters span");
-// const clearAll = document.querySelector(".clear-btn");
 
 const search = document.querySelector('.search input'),
 addForm = document.querySelector('.add'),
@@ -22,17 +9,19 @@ clearAll = document.querySelector(".clear-btn"),
 taskMenu = document.querySelector("ul .task-menu");
 
 
-// ellipsis = document.querySelectorAll("i.ellipsis"),
-// listItem = document.querySelectorAll("li.task"),
-// container = document.querySelector(".todo-list-container");
 
 
 
-const date = new Date();
+const date = new Date()
+const month = date.toLocaleString('default', { month: 'long' });
+const day = date.toLocaleString('default', { day: 'numeric' });
+const dayLong = date.toLocaleString('default', { weekday: 'short' });
 
+const year = date.toLocaleString('default', { year: 'numeric' });
 
-const todayDate = dateFns.format(date, 'MMMM Do, YYYY');
-today.innerText = todayDate;
+const setDate = `${month} ${day}, ${year}`;
+
+today.innerText = setDate;
 
 let editId;
 let isEditedTask = false;
