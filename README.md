@@ -1,14 +1,29 @@
 # Todo App
 
 ## Project Description
-A todo app implementing the CRUD operation. User can **create** a new todo, have it **read** or rendered on the DOM, **update** their todos, and **delete** them as well. 
+A todo app implementing the CRUD operation. User can **create** a new todo, have it **read** or rendered on the DOM, **update** their todos, and **delete** them as well.
+
+Project also utilizes window local storage to save list when browser is closed and reload them the next time it is open.
 
 ## Goals
-To better familiar myself not only with the CRUD operations and how they work but to better my knowledge of JavaScript functions and event handlers. 
+To gain a better understanding of the CRUD operations and to successfully create a project that allows user to do each operation.  
 
-## Tools Used:
-**JavsScript, HTML, CSS, Affinity Designer, [OpenGraph Card Validator](https://www.opengraph.xyz/)**
+### Programming Languages
+* HTML
+* CSS
+* JavaScript
+
+
+### Tools
+* Window local Storage
+* Affinity Designer
+* Figma
+* Whimsical
+* MDN Documentation
+* Terminal
+* AWS Server
+* GitHub
+* FileZilla
 
 ## Links
-
 You may view the project here [JS Todo App](https://alexvong.dev/modules/js-todo-list/).
